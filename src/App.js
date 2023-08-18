@@ -2,28 +2,41 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("dumyName");
+  const [name, setName] = useState("dummyName");
+  const [chats, setChats] = useState([
+    { name: "user1", message: "message1" },
+    { name: "dummyName", message: "message1" },
+  ]);
+  const [msg, setMsg] = useState("");
+
+  function sendChat() {
+    const c = [...chats];
+    c.push({ name, message: msg });
+    setChats(c);
+  }
+
   return (
     <div>
       <h1>User: {name}</h1>
+
       <div className="chat-container">
-        <div className="container me">
-          <p className="chatbox">
-            <strong>name: </strong>
-            <span>chat message</span>
-          </p>
-        </div>
-        <div className="container">
-          <p className="chatbox">
-            <strong>name: </strong>
-            <span>chat message</span>
-          </p>
-        </div>
+        {chats.map((chat) => (
+          <div className={`container ${chat.name === name ? "me" : ""}`}>
+            <p className="chatbox">
+              <strong>{chat.name}: </strong>
+              <span>{chat.message}</span>
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className="input-box">
-        <input type="text" placeholder="Enter your text" />
-        <button>Send</button>
+        <input
+          type="text"
+          placeholder="Enter your text"
+          onInput={(e) => setMsg(e.target.value)}
+        />
+        <button onClick={sendChat}>Send</button>
       </div>
     </div>
   );
