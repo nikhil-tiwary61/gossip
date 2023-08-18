@@ -1,10 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { initializeApp } from "firebase/app";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDawRyU8oGCMGB7s-A6eHdrq4gw-PF67OY",
+  authDomain: "react-chat-app-c9c69.firebaseapp.com",
+  databaseURL:
+    "https://react-chat-app-c9c69-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "react-chat-app-c9c69",
+  storageBucket: "react-chat-app-c9c69.appspot.com",
+  messagingSenderId: "784180240802",
+  appId: "1:784180240802:web:6757232da462bf24bbd2fb",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />

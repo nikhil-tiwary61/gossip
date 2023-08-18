@@ -1,11 +1,15 @@
 import "./App.css";
 import { useState } from "react";
+import { getDatabase } from "firebase/database";
 
 function App() {
   const [name, setName] = useState("");
   const [chats, setChats] = useState([]);
   const [msg, setMsg] = useState("");
 
+  const db = getDatabase();
+
+  //send message to chat
   function sendChat() {
     const c = [...chats];
     c.push({ name, message: msg });
