@@ -1,9 +1,36 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function App() {
-  const [name, setName] = useState("");
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  const googleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        setUser({ name: result.user.displayName, email: result.user.email });
+        console.log(user, token);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
+
+  const [user, setUser] = useState("");
   const [chats, setChats] = useState([]);
   const [msg, setMsg] = useState("");
 
@@ -14,7 +41,7 @@ function App() {
   function sendChat() {
     const chatRef = push(chatListRef);
     set(chatRef, {
-      name,
+      user,
       message: msg,
     });
     setMsg(" ");
@@ -37,27 +64,30 @@ function App() {
 
   return (
     <div>
-      {name ? null : (
+      {user.email ? null : (
         <div>
-          <input
+          {/* <input
             type="text"
             placeholder="Enter your name"
             onBlur={(e) => setName(e.target.value)}
-          />
+          /> */}
+          <button onClick={(e) => googleSignIn()}>Google SignIn</button>
         </div>
       )}
 
-      {name ? (
+      {user.email ? (
         <div>
-          <h1>User: {name}</h1>
+          <h1>User: {user.name}</h1>
           <div id="chat" className="chat-container">
             {chats.map((chat, i) => (
               <div
                 key={i}
-                className={`container ${chat.name === name ? "me" : ""}`}
+                className={`container ${
+                  chat.user.name === user.name ? "me" : ""
+                }`}
               >
                 <p className="chatbox">
-                  <strong>{chat.name}: </strong>
+                  <strong>{chat.user.name}: </strong>
                   <span>{chat.message}</span>
                 </p>
               </div>
