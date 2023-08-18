@@ -7,10 +7,23 @@ function App() {
     <div>
       <h1>User: {name}</h1>
       <div className="chat-container">
-        <p className="chatbox">
-          <strong>name: </strong>
-          <span>chat message</span>
-        </p>
+        <div className="container me">
+          <p className="chatbox">
+            <strong>name: </strong>
+            <span>chat message</span>
+          </p>
+        </div>
+        <div className="container">
+          <p className="chatbox">
+            <strong>name: </strong>
+            <span>chat message</span>
+          </p>
+        </div>
+      </div>
+
+      <div className="input-box">
+        <input type="text" placeholder="Enter your text" />
+        <button>Send</button>
       </div>
     </div>
   );
