@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
-import { getDatabase } from "firebase/database";
+import { useEffect, useState } from "react";
+import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
 
 function App() {
   const [name, setName] = useState("");
@@ -8,12 +8,21 @@ function App() {
   const [msg, setMsg] = useState("");
 
   const db = getDatabase();
+  const chatListRef = ref(db, "chats");
+
+  useEffect(() => {
+    onChildAdded(chatListRef, (data) => {
+      setChats((chats) => [...chats, data.val()]);
+    });
+  }, []);
 
   //send message to chat
   function sendChat() {
-    const c = [...chats];
-    c.push({ name, message: msg });
-    setChats(c);
+    const chatRef = push(chatListRef);
+    set(chatRef, {
+      name,
+      message: msg,
+    });
     setMsg(" ");
   }
 
@@ -33,8 +42,11 @@ function App() {
         <div>
           <h1>User: {name}</h1>
           <div className="chat-container">
-            {chats.map((chat) => (
-              <div className={`container ${chat.name === name ? "me" : ""}`}>
+            {chats.map((chat, i) => (
+              <div
+                key={i}
+                className={`container ${chat.name === name ? "me" : ""}`}
+              >
                 <p className="chatbox">
                   <strong>{chat.name}: </strong>
                   <span>{chat.message}</span>
