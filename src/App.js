@@ -13,6 +13,7 @@ function App() {
     const c = [...chats];
     c.push({ name, message: msg });
     setChats(c);
+    setMsg(" ");
   }
 
   return (
@@ -35,6 +36,7 @@ function App() {
           type="text"
           placeholder="Enter your text"
           onInput={(e) => setMsg(e.target.value)}
+          value={msg}
         />
         <button onClick={sendChat}>Send</button>
       </div>
