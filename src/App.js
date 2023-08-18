@@ -10,12 +10,6 @@ function App() {
   const db = getDatabase();
   const chatListRef = ref(db, "chats");
 
-  useEffect(() => {
-    onChildAdded(chatListRef, (data) => {
-      setChats((chats) => [...chats, data.val()]);
-    });
-  }, []);
-
   //send message to chat
   function sendChat() {
     const chatRef = push(chatListRef);
@@ -25,6 +19,21 @@ function App() {
     });
     setMsg(" ");
   }
+
+  //scroll to latest text
+  function updateHeight() {
+    const element = document.getElementById("chat");
+    if (element) {
+      element.scrollTop = element.scrollHeight;
+    }
+  }
+
+  useEffect(() => {
+    onChildAdded(chatListRef, (data) => {
+      setChats((chats) => [...chats, data.val()]);
+      setTimeout(() => updateHeight(), 100);
+    });
+  }, []);
 
   return (
     <div>
@@ -41,7 +50,7 @@ function App() {
       {name ? (
         <div>
           <h1>User: {name}</h1>
-          <div className="chat-container">
+          <div id="chat" className="chat-container">
             {chats.map((chat, i) => (
               <div
                 key={i}
