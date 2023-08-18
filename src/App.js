@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  const [name, setNmae] = useState("dumyName");
+  const [name, setName] = useState("dumyName");
   return (
     <div>
       <h1>User: {name}</h1>
