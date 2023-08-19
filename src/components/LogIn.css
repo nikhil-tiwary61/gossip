@@ -1,0 +1,74 @@
+:root {
+  --white: #fff;
+  --google-blue: #4285f4;
+  --button-active-blue: #1669f2;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+.login-box {
+  background-color: lightgrey;
+  width: 250px;
+  height: 300px;
+  position: fixed;
+  top: 23%;
+  left: 40%;
+  border-radius: 20px;
+  box-shadow: 0 0 6px grey;
+}
+
+.login-text {
+  position: absolute;
+  top: 51%;
+  left: 14%;
+  font-family: "Roboto";
+  font-size: 17px;
+}
+
+.user-logo {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 24px;
+  left: 76px;
+}
+
+.google-btn {
+  width: 184px;
+  height: 48px;
+  background-color: var(--google-blue);
+  border-radius: 3px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  position: absolute;
+  left: 36px;
+  top: 205px;
+}
+.google-icon-wrapper {
+  position: absolute;
+  margin-top: -11.5px;
+  margin-left: 2px;
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  background-color: var(--white);
+}
+.google-icon {
+  position: absolute;
+  margin-top: 11px;
+  margin-left: -9px;
+  width: 18px;
+  height: 18px;
+}
+.btn-text {
+  float: right;
+  margin: 0px 11px 0 0;
+  color: var(--white);
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  font-family: "Roboto";
+}
+.google-btn:hover {
+  box-shadow: 0 0 6px var(--google-blue);
+}
+.google-btn:active {
+  background: var(--button-active-blue);
+}

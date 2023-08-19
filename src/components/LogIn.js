@@ -1,4 +1,5 @@
 import userLogIn from "../assets/user.png";
+import "./LogIn.css";
 
 export default function LogIn({ googleSignIn }) {
   return (
