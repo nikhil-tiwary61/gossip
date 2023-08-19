@@ -1,4 +1,5 @@
 import "./App.css";
+import userLogIn from "./assets/user.png";
 import { useEffect, useState } from "react";
 import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
@@ -65,12 +66,8 @@ function App() {
   return (
     <div>
       {user.email ? null : (
-        <div>
-          {/* <input
-            type="text"
-            placeholder="Enter your name"
-            onBlur={(e) => setName(e.target.value)}
-          /> */}
+        <div className="login-box">
+          <img src={userLogIn} alt="" className="user-logo" />
           <button onClick={(e) => googleSignIn()} className="google-btn">
             <div className="google-icon-wrapper">
               <img

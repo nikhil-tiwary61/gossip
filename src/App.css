@@ -46,6 +46,24 @@
   margin: 0 0 0 5px;
 }
 
+.login-box{
+  background-color: grey;
+  width: 250px;
+  height: 300px;
+  position: fixed;
+  top: 23%;
+  left: 37%;
+  border-radius: 20px;
+}
+
+.user-logo{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 24px;
+  left: 76px;
+}
+
 :root{
   --white: #fff;
   --google-blue: #4285f4;
