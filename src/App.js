@@ -68,6 +68,9 @@ function App() {
       {user.email ? null : (
         <div className="login-box">
           <img src={userLogIn} alt="" className="user-logo" />
+          <p className="login-text">
+            <b>Login and start chatting!</b>
+          </p>
           <button onClick={(e) => googleSignIn()} className="google-btn">
             <div className="google-icon-wrapper">
               <img
