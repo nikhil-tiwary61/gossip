@@ -1,0 +1,14 @@
+.nav-bar {
+  height: 5em;
+  background-color: bisque;
+}
+.icon {
+  position: absolute;
+  margin: 0.5em;
+}
+.heading-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
