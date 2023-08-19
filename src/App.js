@@ -71,7 +71,18 @@ function App() {
             placeholder="Enter your name"
             onBlur={(e) => setName(e.target.value)}
           /> */}
-          <button onClick={(e) => googleSignIn()}>Google SignIn</button>
+          <button onClick={(e) => googleSignIn()} className="google-btn">
+            <div className="google-icon-wrapper">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                alt="Google Icon"
+                className="google-icon"
+              />
+            </div>
+            <p className="btn-text">
+              <b>Sign in with Google</b>
+            </p>
+          </button>
         </div>
       )}
 
