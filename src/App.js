@@ -76,10 +76,12 @@ function App() {
     <div>
       <Header />
       {user.email ? (
-        <div>
+        <div className="main-page">
           <UserBoard user={user} />
-          <ChatWindow user={user} chats={chats} />
-          <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
+          <div>
+            <ChatWindow user={user} chats={chats} />
+            <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
+          </div>
         </div>
       ) : (
         <LogIn googleSignIn={googleSignIn} />

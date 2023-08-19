@@ -1,14 +1,20 @@
-*{
-  margin: 0;padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.chat-container{
+.main-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-container {
   border: 2px solid black;
   height: 70vh;
   overflow-y: scroll;
 }
 
-.chatbox{
+.chatbox {
   border: 2px solid grey;
   border-radius: 15px;
   margin: 5px 0;
@@ -16,19 +22,19 @@
   background-color: bisque;
 }
 
-.container{
+.container {
   display: flex;
 }
 
-.container.me{
+.container.me {
   flex-direction: row-reverse;
 }
 
-.me .chatbox{
+.me .chatbox {
   background: lightblue;
 }
 
-.input-box{
+.input-box {
   position: fixed;
   bottom: 5px;
   display: flex;
@@ -36,12 +42,12 @@
   width: 100%;
 }
 
-.input-box input{
+.input-box input {
   flex-grow: 1;
-  
+
   padding: 8px;
 }
 
-.input-box button{
+.input-box button {
   margin: 0 0 0 5px;
 }
