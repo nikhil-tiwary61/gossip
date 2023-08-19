@@ -2,6 +2,10 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import LogIn from "./components/LogIn";
+import UserBoard from "./components/UserBoard";
+import ChatWindow from "./components/ChatWindow";
+import Input from "./components/Input";
 
 function App() {
   const provider = new GoogleAuthProvider();
@@ -37,6 +41,11 @@ function App() {
   const db = getDatabase();
   const chatListRef = ref(db, "chats");
 
+  //function to send setMsg as a prop in Input component
+  function setMessage(e) {
+    setMsg(e.target.value);
+  }
+
   //send message to chat
   function sendChat() {
     const chatRef = push(chatListRef);
@@ -64,46 +73,15 @@ function App() {
 
   return (
     <div>
-      {user.email ? null : (
-        <div>
-          {/* <input
-            type="text"
-            placeholder="Enter your name"
-            onBlur={(e) => setName(e.target.value)}
-          /> */}
-          <button onClick={(e) => googleSignIn()}>Google SignIn</button>
-        </div>
-      )}
-
       {user.email ? (
         <div>
-          <h1>User: {user.name}</h1>
-          <div id="chat" className="chat-container">
-            {chats.map((chat, i) => (
-              <div
-                key={i}
-                className={`container ${
-                  chat.user.name === user.name ? "me" : ""
-                }`}
-              >
-                <p className="chatbox">
-                  <strong>{chat.user.name}: </strong>
-                  <span>{chat.message}</span>
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="input-box">
-            <input
-              type="text"
-              placeholder="Enter your text"
-              onInput={(e) => setMsg(e.target.value)}
-              value={msg}
-            />
-            <button onClick={sendChat}>Send</button>
-          </div>
+          <UserBoard user={user} />
+          <ChatWindow user={user} chats={chats} />
+          <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
         </div>
-      ) : null}
+      ) : (
+        <LogIn googleSignIn={googleSignIn} />
+      )}
     </div>
   );
 }
