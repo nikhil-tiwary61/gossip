@@ -78,7 +78,7 @@ function App() {
       {user.email ? (
         <div className="main-page">
           <UserBoard user={user} />
-          <div>
+          <div className="chat-area">
             <ChatWindow user={user} chats={chats} />
             <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
           </div>
