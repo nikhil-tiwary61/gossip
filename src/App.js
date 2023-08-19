@@ -4,7 +4,7 @@ import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import LogIn from "./components/LogIn";
 import UserBoard from "./components/UserBoard";
-import ChatApp from "./components/ChatApp";
+import ChatWindow from "./components/ChatWindow";
 
 function App() {
   const provider = new GoogleAuthProvider();
@@ -70,7 +70,7 @@ function App() {
       {user.email ? (
         <div>
           <UserBoard />
-          <ChatApp user={user} chats={chats} />
+          <ChatWindow user={user} chats={chats} />
           <div className="input-box">
             <input
               type="text"

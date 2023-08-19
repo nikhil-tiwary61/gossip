@@ -1,4 +1,4 @@
-export default function ChatApp({ user, chats }) {
+export default function ChatWindow({ user, chats }) {
   return (
     <>
       <div id="chat" className="chat-container">
