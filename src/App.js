@@ -5,6 +5,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import LogIn from "./components/LogIn";
 import UserBoard from "./components/UserBoard";
 import ChatWindow from "./components/ChatWindow";
+import Input from "./components/Input";
 
 function App() {
   const provider = new GoogleAuthProvider();
@@ -40,6 +41,10 @@ function App() {
   const db = getDatabase();
   const chatListRef = ref(db, "chats");
 
+  function setMessage(e) {
+    setMsg(e.target.value);
+  }
+
   //send message to chat
   function sendChat() {
     const chatRef = push(chatListRef);
@@ -69,17 +74,9 @@ function App() {
     <div>
       {user.email ? (
         <div>
-          <UserBoard />
+          <UserBoard user={user} />
           <ChatWindow user={user} chats={chats} />
-          <div className="input-box">
-            <input
-              type="text"
-              placeholder="Enter your text"
-              onInput={(e) => setMsg(e.target.value)}
-              value={msg}
-            />
-            <button onClick={sendChat}>Send</button>
-          </div>
+          <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
         </div>
       ) : (
         <LogIn googleSignIn={googleSignIn} />
