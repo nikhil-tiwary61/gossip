@@ -41,6 +41,7 @@ function App() {
   const db = getDatabase();
   const chatListRef = ref(db, "chats");
 
+  //function to send setMsg as a prop in Input component
   function setMessage(e) {
     setMsg(e.target.value);
   }
