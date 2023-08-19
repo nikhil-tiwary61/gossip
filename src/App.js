@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { getDatabase, push, ref, set, onChildAdded } from "firebase/database";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import LogIn from "./components/LogIn";
+import UserBoard from "./components/UserBoard";
+import ChatApp from "./components/ChatApp";
 
 function App() {
   const provider = new GoogleAuthProvider();
@@ -67,22 +69,8 @@ function App() {
     <div>
       {user.email ? (
         <div>
-          <h1>User: {user.name}</h1>
-          <div id="chat" className="chat-container">
-            {chats.map((chat, i) => (
-              <div
-                key={i}
-                className={`container ${
-                  chat.user.name === user.name ? "me" : ""
-                }`}
-              >
-                <p className="chatbox">
-                  <strong>{chat.user.name}: </strong>
-                  <span>{chat.message}</span>
-                </p>
-              </div>
-            ))}
-          </div>
+          <UserBoard />
+          <ChatApp user={user} chats={chats} />
           <div className="input-box">
             <input
               type="text"
