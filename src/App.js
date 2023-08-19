@@ -65,8 +65,6 @@ function App() {
 
   return (
     <div>
-      {user.email ? null : <LogIn googleSignIn={googleSignIn} />}
-
       {user.email ? (
         <div>
           <h1>User: {user.name}</h1>
@@ -95,7 +93,9 @@ function App() {
             <button onClick={sendChat}>Send</button>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <LogIn googleSignIn={googleSignIn} />
+      )}
     </div>
   );
 }
