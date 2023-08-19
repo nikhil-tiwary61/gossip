@@ -6,6 +6,7 @@ import LogIn from "./components/LogIn";
 import UserBoard from "./components/UserBoard";
 import ChatWindow from "./components/ChatWindow";
 import Input from "./components/Input";
+import Header from "./components/Header";
 
 function App() {
   const provider = new GoogleAuthProvider();
@@ -73,11 +74,14 @@ function App() {
 
   return (
     <div>
+      <Header />
       {user.email ? (
-        <div>
+        <div className="main-page">
           <UserBoard user={user} />
-          <ChatWindow user={user} chats={chats} />
-          <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
+          <div className="chat-area">
+            <ChatWindow user={user} chats={chats} />
+            <Input sendChat={sendChat} msg={msg} setMessage={setMessage} />
+          </div>
         </div>
       ) : (
         <LogIn googleSignIn={googleSignIn} />

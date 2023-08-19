@@ -1,0 +1,12 @@
+.user-panel {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.user-image {
+  width: 7em;
+  height: 7em;
+  margin: 1em 0em 1em 0em;
+}
