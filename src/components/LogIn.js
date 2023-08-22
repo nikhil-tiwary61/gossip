@@ -1,10 +1,9 @@
-import userLogIn from "../assets/user.png";
 import "../styles/LogIn.css";
 
 export default function LogIn({ googleSignIn }) {
   return (
     <div className="login-box">
-      <img src={userLogIn} alt="" className="user-logo" />
+      <img src="/assets/user.png" alt="" className="user-logo" />
       <p className="login-text">
         <b>Login and start chatting!</b>
       </p>
