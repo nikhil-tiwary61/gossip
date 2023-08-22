@@ -1,5 +1,5 @@
 import icon from "../assets/icon64.png";
-import "./Header.css";
+import "../styles/Header.css";
 
 export default function Header() {
   return (

@@ -1,4 +1,4 @@
-import "./UserBoard.css";
+import "../styles/UserBoard.css";
 
 export default function UserBoard({ user }) {
   const photoURL = user.photoURL;
