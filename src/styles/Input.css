@@ -1,17 +1,31 @@
 .input-box {
-  position: fixed;
-  bottom: 5px;
+  /* position: fixed;
+  bottom: 1em; */
   display: flex;
   flex-direction: row;
-  width: 83%;
+  border-radius: 15px;
+  background: white;
+  width: 90%;
+  height: 10%;
+  margin-top: 2em;
 }
 
 .input-box input {
   flex-grow: 15;
   padding: 8px;
+  border-radius: 15px;
+  box-shadow: 20px 20px 15px 0 #ababab4d, 20px 20px 15px 0 #ababab4d inset;
+  font-size: 1.2em;
 }
 
 .input-box button {
   margin: 0 0 0 5px;
   flex-grow: 1;
+  border-radius: 15px;
+  box-shadow: 20px 20px 15px 0 #ababab4d, 20px 20px 15px 0 #ababab4d inset;
+  font-size: 1.2em;
+}
+
+.input-box button:hover {
+  background: lightblue;
 }
