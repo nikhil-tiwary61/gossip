@@ -13,3 +13,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media only screen and (max-width: 426px) {
+  .main-page {
+    flex-direction: column;
+  }
+}

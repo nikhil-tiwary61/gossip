@@ -17,13 +17,22 @@
   align-items: center;
 }
 
-/* .greeting {
-  margin-top: 1em;
-} */
-
 .user-image {
   width: 7em;
   height: 7em;
   margin: 1em 0em 1em 0em;
   border-radius: 15px;
+}
+
+@media only screen and (max-width: 426px) {
+  .user-box {
+    flex-direction: row;
+    width: fit-content;
+    padding-right: 1em;
+  }
+  .user-image {
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
+  }
 }
