@@ -17,12 +17,13 @@
   align-items: center;
 }
 
-.greeting {
+/* .greeting {
   margin-top: 1em;
-}
+} */
 
 .user-image {
   width: 7em;
   height: 7em;
   margin: 1em 0em 1em 0em;
+  border-radius: 15px;
 }
