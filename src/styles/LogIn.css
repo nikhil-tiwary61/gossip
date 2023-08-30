@@ -5,13 +5,17 @@
 }
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
+.homepage {
+  display: flex;
+  justify-content: center;
+}
+
 .login-box {
   background-color: lightgrey;
   width: 250px;
   height: 300px;
   position: fixed;
   top: 23%;
-  left: 40%;
   border-radius: 20px;
   box-shadow: 0 0 6px grey;
 }
