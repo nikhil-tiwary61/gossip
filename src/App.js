@@ -20,7 +20,11 @@ function App() {
         // The signed-in user info.
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
-        setUser({ name: result.user.displayName, email: result.user.email });
+        setUser({
+          name: result.user.displayName,
+          email: result.user.email,
+          image: result.user.photoURL,
+        });
         console.log(user, token);
       })
       .catch((error) => {
